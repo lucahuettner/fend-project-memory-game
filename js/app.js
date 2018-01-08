@@ -92,7 +92,7 @@ function increment(){
   console.log(count);
 }
 deck.addEventListener('click', function(event){
-if (evt.target.nodeName === 'LI') {
+if (event.target.nodeName === 'LI') {
   const currentCard = event.target.firstChild.className
   showCard(event);
   if (openCards.length < 1) {
