@@ -24,6 +24,7 @@ const cards = [
 const fragment = document.createDocumentFragment();
 const deck = document.querySelector('.deck')
 const openCards = [];
+const counter = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
