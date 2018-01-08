@@ -34,14 +34,15 @@ window.addEventListener('DOMContentLoaded', function (){
   for (const card of cards){
     console.log(card);
     const newCard = document.createElement('li');
-    newCard.id = 'card'
+    newCard.className = 'card'
     const icon = document.createElement('i')
     icon.id = card
     newCard.appendChild(icon)
     fragment.appendChild(newCard)
     // newCard.innerHTML = '<i class=card></i>';
   }
-  console.log(fragment);
+  const deck = document.querySelector('.deck')
+  deck.appendChild(fragment);
 });
 
 // Shuffle function from http://stackoverflow.com/a/2450976
