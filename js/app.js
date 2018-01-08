@@ -73,9 +73,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 function showCard (evt){
-  if (evt.target.nodeName === 'LI'){
-    evt.target.classList.add('show','open');
-  }
+  evt.target.classList.add('show','open');
 };
 // add card to array
 function addCard(item){
