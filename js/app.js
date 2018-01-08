@@ -94,6 +94,7 @@ function increment(){
   console.log(count);
 }
 deck.addEventListener('click', function(event){
+if (evt.target.nodeName === 'LI') {
   const currentCard = event.target.firstChild.className
   showCard(event);
   if (openCards.length < 1) {
@@ -105,5 +106,6 @@ deck.addEventListener('click', function(event){
     resetCard();
     increment();
   }
+}
 
 });
