@@ -22,7 +22,7 @@ const cards = [
 ];
 
 const fragment = document.createDocumentFragment();
-
+const deck = document.querySelector('.deck')
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -41,7 +41,6 @@ window.addEventListener('DOMContentLoaded', function (){
     fragment.appendChild(newCard)
     // newCard.innerHTML = '<i class=card></i>';
   }
-  const deck = document.querySelector('.deck')
   deck.appendChild(fragment);
 });
 
@@ -71,3 +70,9 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+function showCard (evt){
+  if (evt.target.nodeName === 'LI'){
+    evt.target.classList.add('show');
+  }
+};
+deck.addEventListener('click', showCard);
