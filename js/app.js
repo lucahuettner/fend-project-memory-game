@@ -82,5 +82,8 @@ function addCard(item){
 };
 deck.addEventListener('click', function(event){
   showCard(event);
-  addCard(event.target.firstChild.className)
+  if (openCards.length < 2) {
+    addCard(event.target.firstChild.className);
+  }
+
 });
