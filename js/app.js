@@ -81,9 +81,10 @@ function addCard(item){
   console.log(openCards)
 };
 deck.addEventListener('click', function(event){
+  const currentCard = event.target.firstChild.className
   showCard(event);
-  if (openCards.length < 2) {
-    addCard(event.target.firstChild.className);
+  if (openCards.length < 1) {
+    addCard(currentCard);
   }
 
 });
