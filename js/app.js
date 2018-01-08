@@ -76,6 +76,7 @@ function showCard (evt){
     evt.target.classList.add('show','open');
   }
 };
+// add card to array
 function addCard(item){
   openCards.push(item)
   console.log(openCards)
@@ -85,6 +86,8 @@ deck.addEventListener('click', function(event){
   showCard(event);
   if (openCards.length < 1) {
     addCard(currentCard);
+  } else if (openCards[0] === currentCard) {
+    console.log('match')
   }
 
 });
