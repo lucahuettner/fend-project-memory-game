@@ -20,9 +20,10 @@ const cards = [
   'fa fa-bomb',
   'fa fa-bicycle'
 ];
-
+// variables
 const fragment = document.createDocumentFragment();
 const deck = document.querySelector('.deck')
+const openCards = [];
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -72,7 +73,14 @@ function shuffle(array) {
  */
 function showCard (evt){
   if (evt.target.nodeName === 'LI'){
-    evt.target.classList.add('show');
+    evt.target.classList.add('show','open');
   }
 };
-deck.addEventListener('click', showCard);
+function openCard(item){
+  openCards.push(item)
+  console.log(openCards)
+};
+deck.addEventListener('click', function(event){
+  showCard(event);
+  openCard(event.target.firstChild.className)
+});
