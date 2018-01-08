@@ -87,7 +87,10 @@ deck.addEventListener('click', function(event){
   if (openCards.length < 1) {
     addCard(currentCard);
   } else if (openCards[0] === currentCard) {
-    console.log('match')
+    console.log('match');
+    openCards.shift()
+  } else {
+    openCards.shift()
   }
 
 });
