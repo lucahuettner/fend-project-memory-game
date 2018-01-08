@@ -81,16 +81,22 @@ function addCard(item){
   openCards.push(item)
   console.log(openCards)
 };
+function match(){
+  console.log('match');
+  openCards.shift()
+};
+function resetCard(){
+  openCards.shift()
+}
 deck.addEventListener('click', function(event){
   const currentCard = event.target.firstChild.className
   showCard(event);
   if (openCards.length < 1) {
     addCard(currentCard);
   } else if (openCards[0] === currentCard) {
-    console.log('match');
-    openCards.shift()
+    match();
   } else {
-    openCards.shift()
+    resetCard();
   }
 
 });
