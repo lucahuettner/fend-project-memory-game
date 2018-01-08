@@ -89,6 +89,7 @@ function resetCard(){
 }
 function increment(){
   count++;
+  document.querySelector('.moves').innerText = count
   console.log(count);
 }
 deck.addEventListener('click', function(event){
