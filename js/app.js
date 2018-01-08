@@ -76,11 +76,11 @@ function showCard (evt){
     evt.target.classList.add('show','open');
   }
 };
-function openCard(item){
+function addCard(item){
   openCards.push(item)
   console.log(openCards)
 };
 deck.addEventListener('click', function(event){
   showCard(event);
-  openCard(event.target.firstChild.className)
+  addCard(event.target.firstChild.className)
 });
