@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', function (){
     const newCard = document.createElement('li');
     newCard.className = 'card'
     const icon = document.createElement('i')
-    icon.id = card
+    icon.className = card
     newCard.appendChild(icon)
     fragment.appendChild(newCard)
     // newCard.innerHTML = '<i class=card></i>';
