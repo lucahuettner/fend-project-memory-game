@@ -24,7 +24,7 @@ const cards = [
 const fragment = document.createDocumentFragment();
 const deck = document.querySelector('.deck')
 const openCards = [];
-const counter = 0;
+let count = 0;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -89,6 +89,10 @@ function match(){
 function resetCard(){
   openCards.shift()
 }
+function increment(){
+  count++;
+  console.log(count);
+}
 deck.addEventListener('click', function(event){
   const currentCard = event.target.firstChild.className
   showCard(event);
@@ -96,8 +100,10 @@ deck.addEventListener('click', function(event){
     addCard(currentCard);
   } else if (openCards[0] === currentCard) {
     match();
+    increment();
   } else {
     resetCard();
+    increment();
   }
 
 });
