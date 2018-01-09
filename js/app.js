@@ -89,8 +89,11 @@ function resetCard(){
 }
 function increment(){
   count++;
-  document.querySelector('.moves').innerText = count
-  console.log(count);
+  if (count === 1){
+    document.querySelector('.moves').innerText = count + ' Move';
+  } else {
+    document.querySelector('.moves').innerText = count + ' Moves';
+  }
 }
 deck.addEventListener('click', function(event){
 if (event.target.nodeName === 'LI') {
