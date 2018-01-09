@@ -87,12 +87,15 @@ function match(item){
   open[0].parentElement.classList.add('match')
   open[0].parentElement.classList.remove('show','open')
   open[1].parentElement.classList.add('match')
-  open[1].parentElement.classList.add('show','open')
+  open[1].parentElement.classList.remove('show','open')
   openCards.shift()
 };
 function resetCard(){
-
-  openCards.shift()
+  setTimeout(function(){
+    document.getElementsByClassName('show open')[0].classList.remove('show','open')
+    document.getElementsByClassName('show open')[0].classList.remove('show','open')
+    openCards.shift()
+  }, 500)
 }
 function increment(){
   count++;
