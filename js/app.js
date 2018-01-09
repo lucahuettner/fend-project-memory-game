@@ -61,11 +61,12 @@ function shuffle(array) {
     return array;
 }
 
-// Timer from https://stackoverflow.com/a/5517836
+// Timer from https://stackoverflow.com/a/5517836 (modified with start and stop)
 const minutesLabel = document.getElementById("minutes");
 const secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
 let timerOn = false
+let timerEvent;
 
 function setTime() {
   ++totalSeconds;
@@ -83,8 +84,11 @@ function pad(val) {
 }
 
 function startTimer(){
-  const timerEvent = setInterval(setTime, 1000);
+  timerEvent = setInterval(setTime, 1000);
   timerOn = true;
+}
+function stopTimer(){
+  clearInterval(timerEvent);
 }
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -116,7 +120,8 @@ function match(item){
   openCards.shift()
   // check if all cards are matched
   if (document.querySelectorAll('.match').length == 16){
-    console.log('finished')
+    console.log('finished');
+    stopTimer();
   }
 };
 function resetCard(){
