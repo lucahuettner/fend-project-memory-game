@@ -80,8 +80,11 @@ function addCard(item){
   openCards.push(item)
   console.log(openCards)
 };
-function match(){
-  console.log('match');
+function match(item){
+  console.log(item);
+  console.log(document.getElementsByClassName(openCards[0]));
+  document.getElementsByClassName(openCards[0])[0].parentElement.classList.add('match')
+  document.getElementsByClassName(openCards[0])[1].parentElement.classList.add('match')
   openCards.shift()
 };
 function resetCard(){
@@ -102,7 +105,7 @@ if (event.target.nodeName === 'LI') {
   if (openCards.length < 1) {
     addCard(currentCard);
   } else if (openCards[0] === currentCard) {
-    match();
+    match(currentCard);
     increment();
   } else {
     resetCard();
