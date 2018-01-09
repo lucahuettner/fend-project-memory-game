@@ -83,12 +83,14 @@ function addCard(item){
 function match(item){
   console.log(item);
   console.log(document.getElementsByClassName(openCards[0]));
+  // change card look from open to matched
   const open = document.getElementsByClassName(openCards[0])
   open[0].parentElement.classList.add('match')
   open[0].parentElement.classList.remove('show','open')
   open[1].parentElement.classList.add('match')
   open[1].parentElement.classList.remove('show','open')
   openCards.shift()
+  // check if all cards are matched
   if (document.querySelectorAll('.match').length == 16){
     console.log('finished')
   }
