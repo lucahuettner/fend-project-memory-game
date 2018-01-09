@@ -83,11 +83,15 @@ function addCard(item){
 function match(item){
   console.log(item);
   console.log(document.getElementsByClassName(openCards[0]));
-  document.getElementsByClassName(openCards[0])[0].parentElement.classList.add('match')
-  document.getElementsByClassName(openCards[0])[1].parentElement.classList.add('match')
+  const open = document.getElementsByClassName(openCards[0])
+  open[0].parentElement.classList.add('match')
+  open[0].parentElement.classList.remove('show','open')
+  open[1].parentElement.classList.add('match')
+  open[1].parentElement.classList.add('show','open')
   openCards.shift()
 };
 function resetCard(){
+
   openCards.shift()
 }
 function increment(){
