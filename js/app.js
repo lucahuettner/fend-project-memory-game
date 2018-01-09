@@ -62,10 +62,10 @@ function shuffle(array) {
 }
 
 // Timer from https://stackoverflow.com/a/5517836
-var minutesLabel = document.getElementById("minutes");
-var secondsLabel = document.getElementById("seconds");
-var totalSeconds = 0;
-const timerEvent = setInterval(setTime, 1000);
+const minutesLabel = document.getElementById("minutes");
+const secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+let timerOn = false
 
 function setTime() {
   ++totalSeconds;
@@ -80,6 +80,11 @@ function pad(val) {
   } else {
     return valString;
   }
+}
+
+function startTimer(){
+  const timerEvent = setInterval(setTime, 1000);
+  timerOn = true;
 }
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -133,6 +138,7 @@ deck.addEventListener('click', function(event){
 if (event.target.nodeName === 'LI' && event.target.className !== 'card show open') {
   const currentCard = event.target.firstChild.className
   showCard(event);
+  timerOn ? "" : startTimer();
   if (openCards.length < 1) {
     addCard(currentCard);
   } else if (openCards[0] === currentCard) {
