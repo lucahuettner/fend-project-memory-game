@@ -89,6 +89,9 @@ function match(item){
   open[1].parentElement.classList.add('match')
   open[1].parentElement.classList.remove('show','open')
   openCards.shift()
+  if (document.querySelectorAll('.match').length == 16){
+    console.log('finished')
+  }
 };
 function resetCard(){
   setTimeout(function(){
@@ -106,7 +109,7 @@ function increment(){
   }
 }
 deck.addEventListener('click', function(event){
-if (event.target.nodeName === 'LI') {
+if (event.target.nodeName === 'LI' && event.target.className !== 'card show open') {
   const currentCard = event.target.firstChild.className
   showCard(event);
   if (openCards.length < 1) {
