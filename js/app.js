@@ -23,7 +23,7 @@ const cards = [
 // variables
 const fragment = document.createDocumentFragment();
 const deck = document.querySelector('.deck')
-const openCards = [];
+let openCards = [];
 let count = 0;
 /*
  * Display the cards on the page
@@ -31,7 +31,7 @@ let count = 0;
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-window.addEventListener('DOMContentLoaded', function (){
+function createDeck (){
   shuffle(cards)
   for (const card of cards){
     console.log(card);
@@ -44,7 +44,9 @@ window.addEventListener('DOMContentLoaded', function (){
     // newCard.innerHTML = '<i class=card></i>';
   }
   deck.appendChild(fragment);
-});
+};
+// create Deck on page load
+window.addEventListener('DOMContentLoaded', createDeck())
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -139,6 +141,7 @@ function increment(){
     document.querySelector('.moves').innerText = count + ' Moves';
   }
 }
+// Card is clicked
 deck.addEventListener('click', function(event){
 if (event.target.nodeName === 'LI' && event.target.className !== 'card show open') {
   const currentCard = event.target.firstChild.className
@@ -154,5 +157,24 @@ if (event.target.nodeName === 'LI' && event.target.className !== 'card show open
     increment();
   }
 }
-
+// restart Game
+document.querySelector('.restart').addEventListener('click', function(){
+  console.log('restart');
+  // remove deck
+  while (deck.firstChild) {
+    deck.removeChild(deck.firstChild);
+  }
+  stopTimer();
+  // reset Timer
+  timerOn = false
+  totalSeconds = 0;
+  secondsLabel.innerHTML = '00';
+  minutesLabel.innerHTML = '00';
+  // add new Deck
+  createDeck();
+  openCards = [];
+  // reset moves
+  count = 0;
+  document.querySelector('.moves').innerText = count + ' Moves';
+});
 });
