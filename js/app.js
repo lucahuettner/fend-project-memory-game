@@ -23,7 +23,7 @@ const cards = [
 // variables
 const fragment = document.createDocumentFragment();
 const deck = document.querySelector('.deck')
-const stars = document.querySelector('.stars')
+const stars = document.querySelectorAll('.fa-star')
 let openCards = [];
 let count = 0;
 /*
@@ -132,7 +132,7 @@ function resetCard(){
     document.getElementsByClassName('show open')[0].classList.remove('show','open')
     document.getElementsByClassName('show open')[0].classList.remove('show','open')
     openCards.shift()
-  }, 500)
+  }, 400)
 }
 function increment(){
   count++;
@@ -143,12 +143,14 @@ function increment(){
     document.querySelector('.moves').innerText = count + ' Moves';
   }
 }
+// remove a star every 10 moves
 function checkStar(){
   console.log('star');
+
   if (count === 10){
-    stars.removeChild(stars.firstElementChild);
+    stars[0].classList.toggle('hide');
   } else if (count === 20) {
-    stars.removeChild(stars.firstElementChild);
+        stars[1].classList.toggle('hide');
   }
 }
 // Card is clicked
@@ -184,6 +186,12 @@ document.querySelector('.restart').addEventListener('click', function(){
   createDeck();
   openCards = [];
   // reset moves
+  if (count >= 10 && count < 20) {
+    stars[0].classList.toggle('hide');
+  } else if (count >= 20) {
+    stars[1].classList.toggle('hide');
+    stars[0].classList.toggle('hide');
+  }
   count = 0;
   document.querySelector('.moves').innerText = count + ' Moves';
 });
