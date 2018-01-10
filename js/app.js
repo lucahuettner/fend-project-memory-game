@@ -23,6 +23,7 @@ const cards = [
 // variables
 const fragment = document.createDocumentFragment();
 const deck = document.querySelector('.deck')
+const stars = document.querySelector('.stars')
 let openCards = [];
 let count = 0;
 /*
@@ -135,10 +136,19 @@ function resetCard(){
 }
 function increment(){
   count++;
+  checkStar();
   if (count === 1){
     document.querySelector('.moves').innerText = count + ' Move';
   } else {
     document.querySelector('.moves').innerText = count + ' Moves';
+  }
+}
+function checkStar(){
+  console.log('star');
+  if (count === 10){
+    stars.removeChild(stars.firstElementChild);
+  } else if (count === 20) {
+    stars.removeChild(stars.firstElementChild);
   }
 }
 // Card is clicked
