@@ -45,6 +45,7 @@ function createDeck (){
   }
   deck.appendChild(fragment);
 }
+
 // create Deck on page load
 window.addEventListener('DOMContentLoaded', createDeck());
 
@@ -92,6 +93,7 @@ function startTimer(){
 function stopTimer(){
   clearInterval(timerEvent);
 }
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -102,13 +104,16 @@ function stopTimer(){
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
 function showCard (evt){
   evt.target.classList.add('show','open');
 }
+
 // add card to array
 function addCard(item){
   openCards.push(item);
 }
+
 function match(item){
   // change card look from open to matched
   const open = document.getElementsByClassName(openCards[0]);
@@ -119,6 +124,7 @@ function match(item){
   openCards.shift();
   winCheck();
 }
+
 function winCheck(){
   // check if all cards are matched
   if (document.querySelectorAll('.match').length == 16){
@@ -126,7 +132,7 @@ function winCheck(){
     stopTimer();
     // add final time to modal
     document.getElementById('finalTime').innerText = pad(parseInt(totalSeconds / 60)) + ':' + pad(totalSeconds % 60);
-    // add final stars to modal
+    // add amount of final stars to modal
     const finalStars = document.getElementById('finalStars');
     if (count < 10){
       finalStars.innerText = '3 Stars!';
@@ -139,13 +145,17 @@ function winCheck(){
     modal.style.display = "block";
   }
 }
+
 function resetCard(){
+  // short delay to see second card
   setTimeout(function(){
     document.getElementsByClassName('show open')[0].classList.remove('show','open');
     document.getElementsByClassName('show open')[0].classList.remove('show','open');
     openCards.shift();
   }, 400)
 }
+
+// increment moves counter
 function increment(){
   count++;
   checkStar();
@@ -155,6 +165,7 @@ function increment(){
     document.querySelector('.moves').innerText = count + ' Moves';
   }
 }
+
 // remove a star every 10 moves
 function checkStar(){
   if (count === 10){
@@ -163,14 +174,17 @@ function checkStar(){
         stars[1].classList.toggle('hide');
   }
 }
-// Card is clicked
+
+// card is clicked
 deck.addEventListener('click', function(event){
 if (event.target.nodeName === 'LI' && event.target.className !== 'card show open') {
   const currentCard = event.target.firstChild.className;
   showCard(event);
+  // starts timer on the first click
   timerOn ? "" : startTimer();
   if (openCards.length < 1) {
     addCard(currentCard);
+    // check for match
   } else if (openCards[0] === currentCard) {
     match(currentCard);
     increment();
@@ -180,7 +194,8 @@ if (event.target.nodeName === 'LI' && event.target.className !== 'card show open
   }
 }
 })
-// restart Game
+
+// restart game button
 document.querySelector('.restart').addEventListener('click', function(){
   // remove deck
   while (deck.firstChild) {
@@ -205,6 +220,7 @@ document.querySelector('.restart').addEventListener('click', function(){
   count = 0;
   document.querySelector('.moves').innerText = count + ' Moves';
 })
+
 // Modal from https://www.w3schools.com/howto/howto_css_modals.asp
 // Get the modal
 var modal = document.getElementById('myModal');
