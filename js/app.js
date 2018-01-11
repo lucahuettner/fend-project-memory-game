@@ -22,10 +22,11 @@ const cards = [
 ];
 // variables
 const fragment = document.createDocumentFragment();
-const deck = document.querySelector('.deck')
-const stars = document.querySelectorAll('.fa-star')
+const deck = document.querySelector('.deck');
+const stars = document.querySelectorAll('.fa-star');
 let openCards = [];
 let count = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -33,21 +34,20 @@ let count = 0;
  *   - add each card's HTML to the page
  */
 function createDeck (){
-  shuffle(cards)
+  shuffle(cards);
   for (const card of cards){
     console.log(card);
     const newCard = document.createElement('li');
-    newCard.className = 'card'
-    const icon = document.createElement('i')
-    icon.className = card
-    newCard.appendChild(icon)
-    fragment.appendChild(newCard)
-    // newCard.innerHTML = '<i class=card></i>';
+    newCard.className = 'card';
+    const icon = document.createElement('i');
+    icon.className = card;
+    newCard.appendChild(icon);
+    fragment.appendChild(newCard);
   }
   deck.appendChild(fragment);
-};
+}
 // create Deck on page load
-window.addEventListener('DOMContentLoaded', createDeck())
+window.addEventListener('DOMContentLoaded', createDeck());
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -68,7 +68,7 @@ function shuffle(array) {
 const minutesLabel = document.getElementById("minutes");
 const secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
-let timerOn = false
+let timerOn = false;
 let timerEvent;
 
 function setTime() {
@@ -105,12 +105,12 @@ function stopTimer(){
  */
 function showCard (evt){
   evt.target.classList.add('show','open');
-};
+}
 // add card to array
 function addCard(item){
-  openCards.push(item)
-  console.log(openCards)
-};
+  openCards.push(item);
+  console.log(openCards);
+}
 function match(item){
   console.log(item);
   console.log(document.getElementsByClassName(openCards[0]));
@@ -122,7 +122,7 @@ function match(item){
   open[1].parentElement.classList.remove('show','open');
   openCards.shift();
   winCheck();
-};
+}
 function winCheck(){
   // check if all cards are matched
   if (document.querySelectorAll('.match').length == 16){
@@ -134,11 +134,11 @@ function winCheck(){
     // add final stars to modal
     const finalStars = document.getElementById('finalStars');
     if (count < 10){
-      finalStars.innerText = '3 Stars!'
+      finalStars.innerText = '3 Stars!';
     } else if (count >= 10 && count < 20) {
-      finalStars.innerText = '2 Stars!'
+      finalStars.innerText = '2 Stars!';
     } else {
-      finalStars.innerText = '1 Star!'
+      finalStars.innerText = '1 Star!';
     }
     // open modal
     modal.style.display = "block";
@@ -149,7 +149,7 @@ function resetCard(){
     document.getElementsByClassName('show open')[0].classList.remove('show','open');
     document.getElementsByClassName('show open')[0].classList.remove('show','open');
     openCards.shift();
-  }, 400);
+  }, 400)
 }
 function increment(){
   count++;
@@ -173,7 +173,7 @@ function checkStar(){
 // Card is clicked
 deck.addEventListener('click', function(event){
 if (event.target.nodeName === 'LI' && event.target.className !== 'card show open') {
-  const currentCard = event.target.firstChild.className
+  const currentCard = event.target.firstChild.className;
   showCard(event);
   timerOn ? "" : startTimer();
   if (openCards.length < 1) {
@@ -186,7 +186,7 @@ if (event.target.nodeName === 'LI' && event.target.className !== 'card show open
     increment();
   }
 }
-});
+})
 // restart Game
 document.querySelector('.restart').addEventListener('click', function(){
   console.log('restart');
@@ -196,7 +196,7 @@ document.querySelector('.restart').addEventListener('click', function(){
   }
   stopTimer();
   // reset Timer
-  timerOn = false
+  timerOn = false;
   totalSeconds = 0;
   secondsLabel.innerHTML = '00';
   minutesLabel.innerHTML = '00';
@@ -212,7 +212,7 @@ document.querySelector('.restart').addEventListener('click', function(){
   }
   count = 0;
   document.querySelector('.moves').innerText = count + ' Moves';
-});
+})
 // Modal from https://www.w3schools.com/howto/howto_css_modals.asp
 // Get the modal
 var modal = document.getElementById('myModal');
