@@ -127,9 +127,21 @@ function winCheck(){
   // check if all cards are matched
   if (document.querySelectorAll('.match').length == 16){
     console.log('finished');
+    // stop Time
+    stopTimer();
+    // add final time to modal
+    document.getElementById('finalTime').innerText = pad(parseInt(totalSeconds / 60)) + ':' + pad(totalSeconds % 60);
+    // add final stars to modal
+    const finalStars = document.getElementById('finalStars');
+    if (count < 10){
+      finalStars.innerText = '3 Stars!'
+    } else if (count >= 10 && count < 20) {
+      finalStars.innerText = '2 Stars!'
+    } else {
+      finalStars.innerText = '1 Star!'
+    }
     // open modal
     modal.style.display = "block";
-    stopTimer();
   }
 }
 function resetCard(){
@@ -205,16 +217,8 @@ document.querySelector('.restart').addEventListener('click', function(){
 // Get the modal
 var modal = document.getElementById('myModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
