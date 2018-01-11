@@ -36,7 +36,6 @@ let count = 0;
 function createDeck (){
   shuffle(cards);
   for (const card of cards){
-    console.log(card);
     const newCard = document.createElement('li');
     newCard.className = 'card';
     const icon = document.createElement('i');
@@ -109,11 +108,8 @@ function showCard (evt){
 // add card to array
 function addCard(item){
   openCards.push(item);
-  console.log(openCards);
 }
 function match(item){
-  console.log(item);
-  console.log(document.getElementsByClassName(openCards[0]));
   // change card look from open to matched
   const open = document.getElementsByClassName(openCards[0]);
   open[0].parentElement.classList.add('match');
@@ -126,7 +122,6 @@ function match(item){
 function winCheck(){
   // check if all cards are matched
   if (document.querySelectorAll('.match').length == 16){
-    console.log('finished');
     // stop Time
     stopTimer();
     // add final time to modal
@@ -162,8 +157,6 @@ function increment(){
 }
 // remove a star every 10 moves
 function checkStar(){
-  console.log('star');
-
   if (count === 10){
     stars[0].classList.toggle('hide');
   } else if (count === 20) {
@@ -189,7 +182,6 @@ if (event.target.nodeName === 'LI' && event.target.className !== 'card show open
 })
 // restart Game
 document.querySelector('.restart').addEventListener('click', function(){
-  console.log('restart');
   // remove deck
   while (deck.firstChild) {
     deck.removeChild(deck.firstChild);
