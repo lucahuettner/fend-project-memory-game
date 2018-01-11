@@ -115,24 +115,29 @@ function match(item){
   console.log(item);
   console.log(document.getElementsByClassName(openCards[0]));
   // change card look from open to matched
-  const open = document.getElementsByClassName(openCards[0])
-  open[0].parentElement.classList.add('match')
-  open[0].parentElement.classList.remove('show','open')
-  open[1].parentElement.classList.add('match')
-  open[1].parentElement.classList.remove('show','open')
-  openCards.shift()
+  const open = document.getElementsByClassName(openCards[0]);
+  open[0].parentElement.classList.add('match');
+  open[0].parentElement.classList.remove('show','open');
+  open[1].parentElement.classList.add('match');
+  open[1].parentElement.classList.remove('show','open');
+  openCards.shift();
+  winCheck();
+};
+function winCheck(){
   // check if all cards are matched
   if (document.querySelectorAll('.match').length == 16){
     console.log('finished');
+    // open modal
+    modal.style.display = "block";
     stopTimer();
   }
-};
+}
 function resetCard(){
   setTimeout(function(){
-    document.getElementsByClassName('show open')[0].classList.remove('show','open')
-    document.getElementsByClassName('show open')[0].classList.remove('show','open')
-    openCards.shift()
-  }, 400)
+    document.getElementsByClassName('show open')[0].classList.remove('show','open');
+    document.getElementsByClassName('show open')[0].classList.remove('show','open');
+    openCards.shift();
+  }, 400);
 }
 function increment(){
   count++;
@@ -169,6 +174,7 @@ if (event.target.nodeName === 'LI' && event.target.className !== 'card show open
     increment();
   }
 }
+});
 // restart Game
 document.querySelector('.restart').addEventListener('click', function(){
   console.log('restart');
@@ -195,4 +201,29 @@ document.querySelector('.restart').addEventListener('click', function(){
   count = 0;
   document.querySelector('.moves').innerText = count + ' Moves';
 });
-});
+// Modal from https://www.w3schools.com/howto/howto_css_modals.asp
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
