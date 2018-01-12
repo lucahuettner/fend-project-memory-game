@@ -28,7 +28,7 @@ Or as mentioned above you can play the game also [online.](https://lucahuettner.
 * Timer that starts after your first flipped Card.
 * Star rating
 * Move counter
-* Modal that congratulates you to your win and shows your final Time and star rating.
+* Modal that congratulates you to your win and shows your final time and star rating.
 
 ## Notes
 
