@@ -200,10 +200,13 @@ document.querySelector('.restart').addEventListener('click', function(){
   restart();
 })
 
+// modal restart button
 document.querySelector('#modal-restart').addEventListener('click', function(){
   restart()
+  //close modal after restart
   modal.style.display = "none";
 })
+
 function restart(){
   // remove deck
   while (deck.firstChild) {
