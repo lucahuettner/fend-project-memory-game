@@ -197,6 +197,13 @@ if (event.target.nodeName === 'LI' && event.target.className !== 'card show open
 
 // restart game button
 document.querySelector('.restart').addEventListener('click', function(){
+  restart();
+})
+
+document.querySelector('#modal-restart').addEventListener('click', function(){
+  restart()
+})
+function restart(){
   // remove deck
   while (deck.firstChild) {
     deck.removeChild(deck.firstChild);
@@ -219,7 +226,7 @@ document.querySelector('.restart').addEventListener('click', function(){
   }
   count = 0;
   document.querySelector('.moves').innerText = count + ' Moves';
-})
+}
 
 // Modal from https://www.w3schools.com/howto/howto_css_modals.asp
 // Get the modal
