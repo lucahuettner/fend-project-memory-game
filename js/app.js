@@ -202,6 +202,7 @@ document.querySelector('.restart').addEventListener('click', function(){
 
 document.querySelector('#modal-restart').addEventListener('click', function(){
   restart()
+  modal.style.display = "none";
 })
 function restart(){
   // remove deck
