@@ -2,10 +2,10 @@
 
 ## Table of Contents
 
-* [Summary](#Summary)
-* [Installation](#Installation)
-* [Notes](#Notes)
-* [Features](#Features)
+* [Summary](#summary)
+* [Installation](#installation)
+* [Notes](#notes)
+* [Features](#features)
 
 ## Summary
 
